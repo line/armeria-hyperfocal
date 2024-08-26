@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package grpc_http_json_transcoding;
+option java_package = "grpc_http_json_transcoding";
+
+import "google/api/annotations.proto";
+
+service HelloService {
+  rpc Hello (HelloRequest) returns (HelloReply) {
+    option (google.api.http) = {
+      get: "/v1/hello/{name}"
+    };
+  }
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
